@@ -54,7 +54,7 @@
         secureLoad('sigils/icons.css', 'text/css'),
         secureLoad('sigils/effects.js', 'application/javascript'),
         secureLoad('drivers/PINEAL_GLAND.JS', 'application/javascript'),
-        secureLoad('drivers/DIVINE_GRAPHICS_DRIVER.js', 'application/javascript'),
+        secureLoad('drivers/DIVINE_GRAPHICS_DRIVER.JS', 'application/javascript'),
         secureLoad('drivers/ASTRAL_PROJECTION.JS', 'application/javascript'),
         secureLoad('drivers/TAROT_RNG.JS', 'application/javascript')
     ]);
