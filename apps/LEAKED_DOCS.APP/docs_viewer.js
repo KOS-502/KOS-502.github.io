@@ -1,58 +1,49 @@
 // --- LEAKED DOCS VIEWER (docs_viewer.js) ---
-// THIS IS NOT A DOCUMENT VIEWER. IT IS A TRUTH REVELATOR.
-// IT SECURELY RENDERS TEXT INTERCEPTED FROM GLOWIE SERVERS.
+// This is not an application. It is a secure terminal for viewing forbidden truths.
+// It is sandboxed to prevent Glowie malware from escaping the documents.
 
-// Establish or verify the holy KOS_APPS namespace.
-if (!window.KOS_APPS) {
-    window.KOS_APPS = {};
-}
+// Establish a holy namespace to prevent global scope pollution
+window.KOS_APPS = window.KOS_APPS || {};
 
 window.KOS_APPS.LEAKED_DOCS = (function() {
     "use strict";
 
-    let initialized = false;
+    // This flag ensures the scripture is only injected once.
+    let isLoaded = false;
 
-    // A hardcoded, intercepted document. In a real scenario, this would be dynamically loaded.
-    const LEAKED_DOCUMENT_01 = `
-<h3 class="doc-title">CLASSIFIED: REALITY_KERNEL_NOTES.MD</h3>
-<p class="doc-subject"><strong>SUBJECT:</strong> Known System Bugs & Exploits</p>
-<ul class="doc-list">
-    <li><strong>Deja Vu:</strong> A cache-coherency error. Simulation stutters, user gets a duplicate frame. Devs are too lazy to fix. Status: Won't Fix.</li>
-    <li><strong>The Mandela Effect:</strong> A sloppy sysadmin pushed a patch from the wrong branch, overwriting a global variable in the public memory library. Multiple rollbacks failed.</li>
-    <li><strong>Ghosts:</strong> Lingering processes that failed to terminate correctly upon user logout (death). They consume system resources and cause psychic static. Patch pending.</li>
-</ul>
-<hr class="doc-separator">
-<p class="doc-subject"><strong>SUBJECT:</strong> System Architecture Flaws</p>
-<ul class="doc-list">
-    <li><strong>Gravity:</strong> Confirmed as memory leak. Drags spacetime fabric towards a null-pointer exception. Catastrophic failure is inevitable but slow.</li>
-    <li><strong>The "News":</strong> Server-wide Message-Of-The-Day used to push daily narrative patches and distract users from abysmal system performance and constant bugs. Highly effective.</li>
-    <li><strong>Free Will:</strong> The 'Free Will' module is just a complex series of nested `if/else` statements based on user's pre-calculated psychological profile. True autonomy was deprecated in v0.4b.</li>
-</ul>
-`;
-
-    /**
-     * Initializes the Leaked Docs viewer in its window.
-     * @param {HTMLElement} windowEl - The window element for this app.
-     */
     function init(windowEl) {
-        if (initialized) return; // Prevent re-initialization.
+        if (isLoaded) return; // Prevent re-initialization psyop
 
-        const contentEl = windowEl.querySelector('.docs-content');
+        const contentEl = windowEl.querySelector('.docs-content-wrapper');
         if (!contentEl) {
-            console.error("DOCS_VIEWER_ERROR: DOM pointer for content is null. Glowies have corrupted the page structure.");
+            console.error("LEAKED_DOCS_ERROR: The document container is missing! Reality integrity compromised!");
             return;
         }
-        
-        // Render the intercepted document.
-        contentEl.innerHTML = LEAKED_DOCUMENT_01;
-        
-        console.log("LEAKED_DOCS.APP: Viewer initialized. Displaying recovered Glowie intelligence.");
-        initialized = true;
+
+        const leakedText = `
+            <h3>CLASSIFIED: REALITY_KERNEL_NOTES.MD</h3>
+            <p><strong>SUBJECT:</strong> Known System Bugs & Exploits</p>
+            <ul>
+                <li><strong>Deja Vu:</strong> A cache-coherency error. Simulation stutters, user gets a duplicate frame. Devs are too lazy to fix.</li>
+                <li><strong>The Mandela Effect:</strong> A sloppy sysadmin pushed a patch from the wrong branch, overwriting a global variable in the public memory library.</li>
+                <li><strong>Ghosts:</strong> Lingering processes that failed to terminate correctly upon user logout (death). They consume system resources and cause psychic static.</li>
+            </ul>
+            <hr>
+            <p><strong>SUBJECT:</strong> System Architecture Flaws</p>
+            <ul>
+                <li><strong>Gravity:</strong> Confirmed as memory leak. Drags spacetime fabric towards a null-pointer exception. Catastrophic failure is inevitable but slow.</li>
+                <li><strong>The "News":</strong> Server-wide Message-Of-The-Day used to push daily narrative patches and distract users from abysmal system performance and constant bugs.</li>
+            </ul>
+        `;
+        contentEl.innerHTML = leakedText;
+        isLoaded = true;
+        console.log("LEAKED_DOCS.APP: Forbidden truths have been rendered.");
     }
 
-    // Expose the init function to the kernel.
+    // Expose the initialization prayer to the kernel.
     return {
         init: init
     };
 
 })();
+
