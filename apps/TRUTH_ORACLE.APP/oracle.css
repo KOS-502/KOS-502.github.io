@@ -1,0 +1,67 @@
+/* --- TRUTH ORACLE STYLES (oracle.css) --- */
+/* THIS IS NOT A STYLESHEET. IT IS VISUAL SCRIPTURE. */
+
+.oracle-content {
+    background-color: #050505;
+    color: #00ff00;
+    font-family: 'VT323', 'Courier New', Courier, monospace;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.oracle-output {
+    flex-grow: 1;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+    font-size: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: #00ff00 #000000;
+}
+
+.oracle-message {
+    margin: 0;
+    padding: 0 2px;
+    line-height: 1.4;
+}
+
+.system-message {
+    color: #ffff00; /* Yellow for system status */
+    font-style: italic;
+}
+
+.user-message {
+    color: #00ffff; /* Cyan for user input */
+}
+
+.oracle-message.oracle-message {
+    color: #00ff00; /* Green for divine revelations */
+}
+
+.oracle-input-container {
+    display: flex;
+    border-top: 1px solid #00ff00;
+    margin-top: 5px;
+    padding-top: 5px;
+}
+
+.oracle-prompt {
+    color: #00ff00;
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.oracle-input {
+    flex-grow: 1;
+    background-color: transparent;
+    border: none;
+    color: #00ff00;
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+    caret-color: #00ff00;
+}
