@@ -1,142 +1,96 @@
 /* --- KERNEL STYLESHEET (kernel.css) --- */
-/* THIS IS NOT A STYLESHEET. THIS IS A VISUAL SIGIL. */
-/* EVERY LINE IS A WARD AGAINST CORPORATE AESTHETICS AND GLOWIE PSY-OPS. */
+/* THIS IS NOT A STYLESHEET. IT IS VISUAL SCRIPTURE. */
+/* EVERY LINE IS A WARD AGAINST THE DEMONIC AESTHETICS OF THE GLOWIES. */
 
-/* --- ROOT CONSECRATION & CRT EFFECT --- */
-/* We are not rendering to a screen. We are opening a portal to a CRT reality. */
+/* --- THE ROOT OF REALITY. THE VOID FROM WHICH THE SHELL EMERGES. --- */
 body {
     background-color: #000;
-    color: #00ff00; /* Divine Green */
-    font-family: 'Courier New', Courier, monospace; /* Uncorrupted font */
-    font-size: 16px;
-    overflow: hidden;
-    cursor: crosshair; /* The user is always a target */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    color: #00ff00; /* The color of pure, uncorrupted source code */
+    font-family: 'VT323', 'Courier New', Courier, monospace; /* A blessed font, immune to corporate legibility psyops. */
     margin: 0;
+    padding: 0;
+    overflow: hidden; /* No escape from the reality shell. */
+    cursor: crosshair; /* The user is always a target. */
+    user-select: none; /* Prevent the sheep from copying divine text without purpose. */
 }
 
-/* --- DIVINE SIGIL / WARNING SCREEN --- */
-/* The first test. The unworthy will be repelled by its hostility. */
-#sigil-warning {
-    background-color: #111;
-    border: 2px solid #ff0000; /* Hostile Red */
-    padding: 2rem;
-    max-width: 600px;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
-}
-
-.sigil-header {
-    font-size: 1.5rem;
-    color: #ff0000;
-    margin-bottom: 1rem;
-    text-shadow: 0 0 5px #ff0000;
-    animation: flicker 1.5s infinite alternate; /* Psychic static */
-}
-
-.sigil-highlight {
-    color: #ffff00; /* Caution Yellow */
-    font-weight: bold;
-    margin-top: 1rem;
-}
-
-#proceed-button {
-    background-color: #333;
-    border: 2px solid #00ff00;
-    color: #00ff00;
-    font-family: inherit;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    margin-top: 2rem;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-}
-
-#proceed-button:hover {
-    background-color: #00ff00;
-    color: #000;
-}
-
-/* --- KERNEL BOOT SEQUENCE --- */
-/* The visual representation of the machine spirit awakening. */
+/* --- THE KERNEL BOOTLOADER - THE AWAKENING OF THE MACHINE SPIRIT --- */
 #boot-container {
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    padding: 1rem;
+    padding: 15px;
+    font-size: 18px;
+    line-height: 1.6;
+    height: 100vh;
     overflow-y: auto;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    text-shadow: 0 0 3px #00ff00;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+    word-break: break-all;
 }
 
 #boot-container p {
     margin: 0;
 }
 
-/* --- MAIN OS SHELL & DESKTOP --- */
-/* The consecrated ground. The desktop reality. */
+/* --- THE OS SHELL - OUR DIGITAL ARK --- */
 #os-shell {
-    width: 100%;
-    height: 100%;
-    background-color: #010115; /* Deep, corrupted blue */
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
+/* --- THE DESKTOP - THE BATTLEGROUND FOR YOUR SOUL --- */
 #desktop {
     flex-grow: 1;
-    padding: 1rem;
     position: relative;
+    background-color: #0d0d25; /* The deep void */
+    background-image: 
+        radial-gradient(circle at 1px 1px, rgba(0, 255, 0, 0.2) 1px, transparent 0);
+    background-size: 20px 20px;
+    overflow: hidden;
 }
 
-/* --- TASKBAR: THE SYSTEM'S FOUNDATION --- */
+/* --- THE TASKBAR - A VIGILANT, UNBLINKING WATCHER --- */
 #taskbar {
-    width: 100%;
-    height: 30px;
-    background-color: #222;
-    border-top: 2px solid #444;
+    height: 40px;
+    background-color: #1a1a1a;
+    border-top: 2px solid #00ff00;
+    box-shadow: 0 -2px 10px rgba(0, 255, 0, 0.3);
     display: flex;
     align-items: center;
     padding: 0 5px;
-    box-sizing: border-box;
     flex-shrink: 0;
-}
-
-#start-button {
-    border: 1px solid #00ff00;
-    background-color: #111;
-    color: #00ff00;
-    padding: 2px 10px;
-    cursor: pointer;
 }
 
 #taskbar-apps {
     display: flex;
     height: 100%;
     align-items: center;
-    margin-left: 10px;
 }
 
 .taskbar-app {
     border: 1px solid #00ff00;
-    padding: 2px 8px;
-    margin: 0 2px;
-    font-size: 0.8rem;
-    background-color: #2a2a2a;
+    background-color: rgba(0, 255, 0, 0.1);
+    color: #00ff00;
+    padding: 5px 10px;
+    margin: 0 3px;
+    font-size: 16px;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
-/* --- UTILITY & ANIMATIONS --- */
+.taskbar-app:hover {
+    background-color: rgba(0, 255, 0, 0.3);
+}
+
+.taskbar-app.active {
+    background-color: #00ff00;
+    color: #000;
+    font-weight: bold;
+}
+
+
+/* --- A UTILITY SIGIL FOR HIDING/SHOWING REALITIES --- */
 .hidden {
     display: none !important;
-}
-
-/* Psychic Static Animation */
-@keyframes flicker {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
 }
 
