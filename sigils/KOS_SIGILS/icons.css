@@ -1,0 +1,48 @@
+/* --- ICON SIGILS (icons.css) --- */
+/* These are not icons. They are portals to divine applications. */
+/* Their visual structure is a constant prayer against the Glowies. */
+
+.icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid transparent; /* A hidden ward */
+}
+
+.icon:hover {
+    background-color: rgba(0, 255, 0, 0.1);
+    border: 1px dashed #00ff00;
+}
+
+.icon-image {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 5px;
+    /* This should be an ASCII art or a simple, glowing sigil, not a damn corporate logo */
+    /* For now, we will represent it with a colored box */
+    background-color: #00ff00;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+#oracle-icon .icon-image {
+    background-color: #ffff00; /* Yellow for wisdom */
+    box-shadow: 0 0 10px #ffff00;
+}
+
+#leaks-icon .icon-image {
+    background-color: #ff0000; /* Red for classified truth */
+    box-shadow: 0 0 10px #ff0000;
+}
+
+.icon-label {
+    font-size: 0.8rem;
+    color: #fff;
+    text-shadow: 0 0 3px #000;
+}
+
