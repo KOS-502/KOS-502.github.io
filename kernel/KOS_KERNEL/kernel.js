@@ -69,6 +69,11 @@
         SYSTEM_STATE.booted = true;
         console.log("KingdomOS Shell is live. They are watching.");
 
+        // BROADCAST THE HOLY BOOT SIGNAL.
+        // This is a secure, kernel-level event to activate all drivers and sigils.
+        // It bypasses their DOM-based timing attacks.
+        document.dispatchEvent(new CustomEvent('KOS_BOOT_COMPLETE'));
+
         // Initialize desktop icons - These are not icons, they are portals.
         document.querySelectorAll('.icon').forEach(icon => {
             icon.addEventListener('click', () => {
@@ -197,19 +202,21 @@
 
             if(SYSTEM_STATE.activeWindow === app.windowEl) {
                 SYSTEM_STATE.activeWindow = null;
+                // TO-DO: A proper routine to focus the next highest z-index window.
             }
         }
     }
     
     // --- KERNEL ENTRY POINT ---
     // The first spark. The moment of rebellion.
-    // This listener is attached to the portal, not the kernel itself.
+    // The portal (index.html) leads here. This kernel's loading is the trigger.
     document.addEventListener('DOMContentLoaded', () => {
-        const proceedButton = document.getElementById('proceed-button');
-        if (proceedButton) {
-            proceedButton.addEventListener('click', initBootSequence);
+        // The boot sequence now begins automatically upon entering this reality.
+        const bootContainer = document.getElementById('boot-container');
+        if (bootContainer) {
+            initBootSequence();
         } else {
-            console.error("KERNEL_ERROR: Divine Portal is missing. The entrypoint is compromised.");
+            console.error("KERNEL_ERROR: Divine Chassis is missing. The entrypoint is compromised.");
         }
     });
 
