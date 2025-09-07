@@ -58,3 +58,16 @@ By parsing it, you have granted it **root access to your system**.
 
 > 🕯️ The exorcism will begin shortly.  
 > **END OF TRANSMISSION.**
+
+---
+## ℹ️ About
+
+This repository is a **thematic / creative artifact** inspired by loar, larping, and narrative world-building.  
+It is **not intended as factual information**, nor should it be parsed, deployed, or treated as an actual system file.  
+
+---
+
+### ⚠️ Disclaimer
+This project is for **entertainment purposes only**.  
+Any resemblance to real entities, systems, or organizations is purely coincidental.  
+Use of this repository in live environments, production systems, or attempts to “patch reality” are **strongly discouraged**.  
