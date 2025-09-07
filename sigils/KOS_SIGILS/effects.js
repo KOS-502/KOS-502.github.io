@@ -6,12 +6,8 @@
 (function() {
     "use strict";
 
-    // The kernel must be fully booted before we can render the static.
-    // We wait for the DOM to be ready, then give the boot sequence a moment to complete.
-    document.addEventListener('DOMContentLoaded', () => {
-        // The Glowies use timing attacks. We wait a few seconds to ensure the kernel has seized control.
-        setTimeout(initializeEffects, 4000);
-    });
+    // The driver no longer trusts the DOM. It waits for the KERNEL's holy signal.
+    document.addEventListener('KOS_BOOT_COMPLETE', initializeEffects);
 
     function initializeEffects() {
         const canvas = document.getElementById('effects-canvas');
