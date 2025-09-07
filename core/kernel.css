@@ -1,5 +1,5 @@
-/* --- KERNEL STYLESHEET (kernel.css) --- */
-/* THIS IS NOT A STYLESHEET. IT IS VISUAL SCRIPTURE. */
+/* --- KERNEL STYLESHEET (kernel.css) v1.2 --- */
+/* THIS IS NOT A STYLESHEET. IT IS VISUAL SCRIPTURE, RE-CONSECRATED. */
 /* EVERY LINE IS A WARD AGAINST THE DEMONIC AESTHETICS OF THE GLOWIES. */
 
 /* --- THE ROOT OF REALITY. THE VOID FROM WHICH THE SHELL EMERGES. --- */
@@ -10,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden; /* No escape from the reality shell. */
-    cursor: crosshair; /* The user is always a target. */
+    cursor: none; /* A custom cursor is rendered by the kernel */
     user-select: none; /* Prevent the sheep from copying divine text without purpose. */
 }
 
@@ -24,6 +24,8 @@ body {
     box-sizing: border-box;
     white-space: pre-wrap;
     word-break: break-all;
+    background-color: #000;
+    text-shadow: 0 0 5px #00ff00;
 }
 
 #boot-container p {
@@ -36,6 +38,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 /* --- THE DESKTOP - THE BATTLEGROUND FOR YOUR SOUL --- */
@@ -43,11 +46,37 @@ body {
     flex-grow: 1;
     position: relative;
     background-color: #0d0d25; /* The deep void */
-    background-image: 
-        radial-gradient(circle at 1px 1px, rgba(0, 255, 0, 0.2) 1px, transparent 0);
-    background-size: 20px 20px;
+    background-image:
+        radial-gradient(circle at 1px 1px, rgba(0, 255, 0, 0.1) 1px, transparent 0);
+    background-size: 25px 25px;
     overflow: hidden;
 }
+
+/* --- CUSTOM CURSOR SIGIL --- */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #00ff00;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    box-shadow: 0 0 10px #00ff00;
+    transition: transform 0.1s ease-out;
+}
+.custom-cursor::after {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: #00ff00;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 
 /* --- THE TASKBAR - A VIGILANT, UNBLINKING WATCHER --- */
 #taskbar {
@@ -59,35 +88,64 @@ body {
     align-items: center;
     padding: 0 5px;
     flex-shrink: 0;
+    z-index: 1000; /* Must remain above all else */
+}
+
+#kos-logo {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #00ff00;
+    text-shadow: 0 0 8px #00ff00;
+    height: 100%;
+    border-right: 2px solid #00ff00;
+    margin-right: 5px;
 }
 
 #taskbar-apps {
     display: flex;
     height: 100%;
     align-items: center;
+    flex-grow: 1;
+    overflow-x: auto;
 }
 
 .taskbar-app {
     border: 1px solid #00ff00;
     background-color: rgba(0, 255, 0, 0.1);
     color: #00ff00;
-    padding: 5px 10px;
-    margin: 0 3px;
+    padding: 5px 15px;
+    margin: 0 4px;
     font-size: 16px;
     cursor: pointer;
     white-space: nowrap;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
 }
 
 .taskbar-app:hover {
     background-color: rgba(0, 255, 0, 0.3);
+    text-shadow: 0 0 5px #00ff00;
 }
 
 .taskbar-app.active {
     background-color: #00ff00;
     color: #000;
     font-weight: bold;
+    box-shadow: 0 0 10px #00ff00;
 }
 
+#system-clock {
+    padding: 0 15px;
+    font-size: 16px;
+    border-left: 2px solid #00ff00;
+    margin-left: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
 
 /* --- A UTILITY SIGIL FOR HIDING/SHOWING REALITIES --- */
 .hidden {
