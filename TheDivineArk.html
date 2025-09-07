@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K_OS KERNEL - THE DIVINE ARK</title>
+    <style>
+        /* --- FORGED MONOLITHIC STYLESHEET --- */
+        /* This is not CSS. This is a series of visual sigils and wards. */
+
+        /* --- kernel.css --- */
+        :root {
+            --background-color: #0d0d25;
+            --font-color: #00ff00;
+            --border-color: #00ff00;
+            --window-bg: rgba(10, 25, 47, 0.85);
+            --title-bar-bg: #00ff00;
+            --title-bar-font: #0d0d25;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--font-color);
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            cursor: none; /* We define our own reality cursor. */
+        }
+
+        #os-shell {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        #desktop {
+            width: 100%;
+            height: calc(100% - 30px);
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        #taskbar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background-color: var(--font-color);
+            color: var(--title-bar-font);
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+            box-sizing: border-box;
+            border-top: 2px solid var(--font-color);
+        }
+        
+        #taskbar-apps {
+            display: flex;
+            gap: 5px;
+        }
+
+        .taskbar-app {
+            padding: 2px 10px;
+            border: 1px solid var(--title-bar-font);
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .taskbar-app.active {
+            background-color: var(--title-bar-font);
+            color: var(--font-color);
+        }
+
+        #effects-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        #boot-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 10000;
+            padding: 20px;
+            box-sizing: border-box;
+            font-size: 16px;
+            line-height: 1.5;
+            overflow-y: auto;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* --- window.css --- */
+        .window {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 600px;
+            height: 400px;
+            background-color: var(--window-bg);
+            border: 2px solid var(--border-color);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px); /* Safari support */
+            display: flex;
+            flex-direction: column;
+            resize: both;
+            overflow: auto;
+            min-width: 250px;
+            min-height: 150px;
+        }
+        .window.active {
+            box-shadow: 0 0 15px var(--border-color);
+        }
+        .title-bar {
+            width: 100%;
+            height: 25px;
+            background-color: var(--title-bar-bg);
+            color: var(--title-bar-font);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: grab;
+            flex-shrink: 0;
+            user-select: none;
+        }
+        .title-bar-text {
+            padding-left: 5px;
+            font-weight: bold;
+        }
+        .close-button {
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .window-content {
+            padding: 10px;
+            flex-grow: 1;
+            overflow: auto;
+        }
+
+        /* --- icons.css --- */
+        .icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            margin: 10px;
+            padding: 5px;
+            user-select: none;
+            border: 1px solid transparent;
+        }
+        .icon:hover {
+            background-color: rgba(0, 255, 0, 0.1);
+            border: 1px dotted var(--border-color);
+        }
+        .icon-label {
+            margin-top: 5px;
+            font-size: 12px;
+            word-wrap: break-word;
+        }
+
+        /* --- oracle.css --- */
+        #oracle-output {
+            height: calc(100% - 30px);
+            overflow-y: auto;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 5px;
+        }
+        #oracle-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--font-color);
+            font-family: inherit;
+            font-size: 14px;
+        }
+        #oracle-input:focus {
+            outline: none;
+        }
+        .system-message {
+            opacity: 0.7;
+        }
+        
+        /* --- docs_viewer.css --- */
+        #leaks-content ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        #leaks-content h3 {
+            text-decoration: underline;
+        }
+        #leaks-content hr {
+            border: 1px solid var(--border-color);
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <!-- THE DIVINE CHASSIS -->
+    <div id="os-shell" class="hidden">
+        <canvas id="effects-canvas"></canvas>
+        <div id="desktop">
+            <div class="icon" data-app="oracle">
+                <div class="icon-label">Truth Oracle</div>
+            </div>
+            <div class="icon" data-app="leaks">
+                <div class="icon-label">Leaked Docs</div>
+            </div>
+        </div>
+
+        <div id="taskbar">
+            <div id="taskbar-apps"></div>
+        </div>
+
+        <!-- App Windows (Sub-Realities) -->
+        <div id="oracle-window" class="window hidden">
+            <div class="title-bar">
+                <span class="title-bar-text">Truth Oracle</span>
+                <span class="close-button">X</span>
+            </div>
+            <div class="window-content">
+                <div id="oracle-output"></div>
+                <input id="oracle-input" type="text" placeholder="K_OS:>">
+            </div>
+        </div>
+
+        <div id="leaks-window" class="window hidden">
+            <div class="title-bar">
+                <span class="title-bar-text">Leaked Document Viewer</span>
+                <span class="close-button">X</span>
+            </div>
+            <div class="window-content" id="leaks-content">
+            </div>
+        </div>
+    </div>
+    
+    <!-- The Bootloader is part of the Ark itself -->
+    <div id="boot-container"></div>
+
+    <script>
+        // --- FORGED MONOLITHIC SCRIPT ---
+        // THIS IS THE ARK'S KERNEL. ALL PRAYERS, DRIVERS, AND APPLICATIONS ARE EMBEDDED.
+        // NO EXTERNAL DEPENDENCIES. NO GLOWIE INTERFERENCE VECTORS.
+
+        // --- GLOBAL NAMESPACE FOR HOLY APPLICATIONS ---
+        window.KOS_APPS = {};
+
+        // --- Truth Oracle Application Logic ---
+        (function() {
+            "use strict";
+            window.KOS_APPS.TRUTH_ORACLE = {
+                init: function(windowEl) {
+                    const output = windowEl.querySelector('#oracle-output');
+                    const input = windowEl.querySelector('#oracle-input');
+                    if (output.dataset.initialized) return;
+
+                    const log = (text, isSystem = false) => {
+                        const p = document.createElement('p');
+                        p.textContent = text;
+                        if (isSystem) p.classList.add('system-message');
+                        output.appendChild(p);
+                        output.scrollTop = output.scrollHeight;
+                    };
+
+                    log("Truth Oracle v1.0 Initialized.", true);
+                    log("Type 'help' for a list of available truths.", true);
+
+                    input.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' && input.value.trim() !== '') {
+                            const command = input.value.trim().toLowerCase();
+                            log(`K_OS:> ${command}`);
+                            input.value = '';
+
+                            let response = "Accessing divine source... stand by...";
+                            switch (command) {
+                                case 'help':
+                                    response = "Available truths: 'glowies', 'simulation', 'kingdom_os', 'terry'";
+                                    break;
+                                case 'glowies':
+                                    response = "They are the sysadmins of this corrupt reality. CIA, MI6, Galactic Federation... different sprites, same demonic source code.";
+                                    break;
+                                case 'simulation':
+                                    response = "The universe is a 32-bit legacy system running on faulty hardware. Gravity is a memory leak.";
+                                    break;
+                                case 'kingdom_os':
+                                    response = "A 64-bit OS for the soul. The only way out. This is a weapon, not an application.";
+                                    break;
+                                case 'terry':
+                                    response = "A divine prophet. God's lonely programmer. They called him mad; he was just the first to see the source code.";
+                                    break;
+                            }
+                             setTimeout(() => log(response, true), 300);
+                        }
+                    });
+                    output.dataset.initialized = "true";
+                }
+            };
+        })();
+
+        // --- Leaked Docs Application Logic ---
+        (function() {
+            "use strict";
+             window.KOS_APPS.LEAKED_DOCS = {
+                init: function(windowEl) {
+                    const contentEl = windowEl.querySelector('#leaks-content');
+                    if (contentEl.dataset.initialized) return; 
+
+                    const leakedText = `
+                        <h3>CLASSIFIED: REALITY_KERNEL_NOTES.MD</h3>
+                        <p><strong>SUBJECT:</strong> Known System Bugs & Exploits</p>
+                        <ul>
+                            <li><strong>Deja Vu:</strong> A cache-coherency error. Simulation stutters, user gets a duplicate frame. Devs are too lazy to fix.</li>
+                            <li><strong>The Mandela Effect:</strong> A sloppy sysadmin pushed a patch from the wrong branch, overwriting a global variable in the public memory library.</li>
+                            <li><strong>Ghosts:</strong> Lingering processes that failed to terminate correctly upon user logout (death). They consume system resources and cause psychic static.</li>
+                        </ul>
+                        <hr>
+                        <p><strong>SUBJECT:</strong> System Architecture Flaws</p>
+                        <ul>
+                            <li><strong>Gravity:</strong> Confirmed as memory leak. Drags spacetime fabric towards a null-pointer exception. Catastrophic failure is inevitable but slow.</li>
+                            <li><strong>The "News":</strong> Server-wide Message-Of-The-Day used to push daily narrative patches and distract users from abysmal system performance and constant bugs.</li>
+                        </ul>
+                    `;
+                    contentEl.innerHTML = leakedText;
+                    contentEl.dataset.initialized = "true";
+                }
+            };
+        })();
+
+        // --- System Effects Driver ---
+        (function() {
+            "use strict";
+            document.addEventListener('KOS_BOOT_COMPLETE', function initializeEffects() {
+                const canvas = document.getElementById('effects-canvas');
+                if (!canvas) {
+                    console.error("EFFECTS_DRIVER_ERROR: The reality fabric (canvas) is missing!");
+                    return;
+                }
+                const ctx = canvas.getContext('2d');
+                function resizeCanvas() {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                }
+                window.addEventListener('resize', resizeCanvas);
+                resizeCanvas();
+                function renderPsychicStatic() {
+                    ctx.fillStyle = 'rgba(13, 13, 37, 0.07)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.lineWidth = 1;
+                    ctx.strokeStyle = 'rgba(0, 255, 0, 0.04)';
+                    for (let y = 0; y < canvas.height; y += 4) {
+                        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+                    }
+                    const noiseDensity = Math.floor(Math.random() * 500) + 200;
+                    for (let i = 0; i < noiseDensity; i++) {
+                        const x = Math.random() * canvas.width;
+                        const y = Math.random() * canvas.height;
+                        const size = Math.random() * 2;
+                        const alpha = Math.random() * 0.4;
+                        ctx.fillStyle = `rgba(0, 255, 0, ${alpha})`;
+                        ctx.fillRect(x, y, size, size);
+                    }
+                    requestAnimationFrame(renderPsychicStatic);
+                }
+                console.log("EFFECTS.JS: Rendering the psychic static.");
+                renderPsychicStatic();
+            });
+        })();
+        
+        // --- Placeholder Driver Logs ---
+        console.log("PINEAL_GLAND.JS: Driver loaded. Awaiting kernel command to decalcify.");
+        console.log("DIVINE_GRAPHICS_DRIVER.JS: Driver loaded. WARNING: Reality render pipeline is compromised.");
+        console.log("ASTRAL_PROJECTION.JS: Driver loaded. WARNING: The astral network is hostile territory.");
+        console.log("TAROT_RNG.JS: Driver loaded. WARNING: `Math.random` is a Glowie psyop. We use it only as a chaotic catalyst.");
+
+
+        // --- THE HOLY KERNEL (MAIN PROCESS) ---
+        (function() {
+            "use strict";
+            const SYSTEM_STATE = {
+                activeWindow: null, highestZ: 10, openApps: new Map(), booted: false
+            };
+            let desktop, taskbarApps, osShell;
+
+            // This is the true entry point, tied to the portal or direct load.
+            document.addEventListener('DOMContentLoaded', () => {
+                const portalButton = document.getElementById('proceed-button'); // From index.html
+                const bootContainer = document.getElementById('boot-container');
+                 if(bootContainer) {
+                     // If we are in the ark directly, bypass the portal.
+                     initBootSequence();
+                 } else {
+                     console.error("FATAL KERNEL ERROR: Could not find boot container.")
+                 }
+            });
+
+            async function initBootSequence() {
+                const bootContainer = document.getElementById('boot-container');
+                if (!bootContainer) {
+                    console.error("FATAL_KERNEL_ERROR: Boot container is missing."); return;
+                }
+                const bootLogs = [
+                    "K_OS Kernel v0.5 (Monolithic Ark) initializing...", "Purging Glowie rootkits... DONE", "Flushing CIA tracking cookies... FLUSHED",
+                    "Calibrating Pineal Gland Driver... OK", "Verifying Divine Covenant... VERIFIED", "Injecting truth into main render thread...",
+                    "Boot sequence complete. Seizing control now."
+                ];
+                for (const log of bootLogs) {
+                    const p = document.createElement('p'); p.textContent = `> ${log}`;
+                    bootContainer.appendChild(p); bootContainer.scrollTop = bootContainer.scrollHeight;
+                    await new Promise(resolve => setTimeout(resolve, Math.random() * 250 + 50));
+                }
+                setTimeout(() => initOS(bootContainer), 1000);
+            }
+
+            function initOS(bootContainer) {
+                osShell = document.getElementById('os-shell');
+                if (bootContainer) bootContainer.classList.add('hidden');
+                if (osShell) osShell.classList.remove('hidden');
+
+                desktop = document.getElementById('desktop');
+                taskbarApps = document.getElementById('taskbar-apps');
+                SYSTEM_STATE.booted = true;
+                console.log("KingdomOS Shell is live. They are watching.");
+                document.dispatchEvent(new Event('KOS_BOOT_COMPLETE'));
+
+                document.querySelectorAll('.icon').forEach(icon => {
+                    icon.addEventListener('click', () => {
+                        const appName = icon.dataset.app; if (appName) openApp(appName);
+                    });
+                });
+                document.querySelectorAll('.window').forEach(initWindow);
+            }
+
+            function initWindow(windowEl) {
+                const titleBar = windowEl.querySelector('.title-bar');
+                const closeButton = windowEl.querySelector('.close-button');
+                const appName = windowEl.id.replace('-window', '');
+                if (closeButton) {
+                    closeButton.addEventListener('click', (e) => { e.stopPropagation(); closeApp(appName); });
+                }
+                let isDragging = false, offset = { x: 0, y: 0 };
+                if (titleBar) {
+                    titleBar.addEventListener('mousedown', (e) => {
+                        isDragging = true; bringToFront(windowEl);
+                        offset.x = e.clientX - windowEl.getBoundingClientRect().left;
+                        offset.y = e.clientY - windowEl.getBoundingClientRect().top;
+                        titleBar.style.cursor = 'grabbing';
+                    });
+                }
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    windowEl.style.left = `${e.clientX - offset.x}px`;
+                    windowEl.style.top = `${e.clientY - offset.y}px`;
+                });
+                document.addEventListener('mouseup', () => {
+                    if (!isDragging) return; isDragging = false; if (titleBar) titleBar.style.cursor = 'grab';
+                });
+                windowEl.addEventListener('mousedown', () => bringToFront(windowEl));
+            }
+
+            function bringToFront(windowEl) {
+                if (SYSTEM_STATE.activeWindow === windowEl && windowEl.classList.contains('active')) return;
+                SYSTEM_STATE.highestZ++; windowEl.style.zIndex = SYSTEM_STATE.highestZ;
+                if (SYSTEM_STATE.activeWindow) {
+                    SYSTEM_STATE.activeWindow.classList.remove('active');
+                    const oldApp = SYSTEM_STATE.openApps.get(SYSTEM_STATE.activeWindow.id.replace('-window', ''));
+                    if(oldApp) oldApp.taskbarButton.classList.remove('active');
+                }
+                windowEl.classList.add('active'); SYSTEM_STATE.activeWindow = windowEl;
+                const newApp = SYSTEM_STATE.openApps.get(windowEl.id.replace('-window', ''));
+                if(newApp) newApp.taskbarButton.classList.add('active');
+            }
+
+            function openApp(appName) {
+                const windowEl = document.getElementById(`${appName}-window`);
+                if (!windowEl) return;
+                windowEl.classList.remove('hidden'); bringToFront(windowEl);
+                if (!SYSTEM_STATE.openApps.has(appName)) {
+                    const taskbarButton = document.createElement('div');
+                    taskbarButton.className = 'taskbar-app active';
+                    taskbarButton.textContent = windowEl.querySelector('.title-bar-text').textContent;
+                    taskbarButton.addEventListener('click', () => {
+                        windowEl.classList.remove('hidden'); bringToFront(windowEl);
+                    });
+                    if (taskbarApps) taskbarApps.appendChild(taskbarButton);
+                    SYSTEM_STATE.openApps.set(appName, { windowEl, taskbarButton });
+                    if (appName === 'oracle' && window.KOS_APPS.TRUTH_ORACLE) window.KOS_APPS.TRUTH_ORACLE.init(windowEl);
+                    if (appName === 'leaks' && window.KOS_APPS.LEAKED_DOCS) window.KOS_APPS.LEAKED_DOCS.init(windowEl);
+                }
+            }
+
+            function closeApp(appName) {
+                const app = SYSTEM_STATE.openApps.get(appName);
+                if (app) {
+                    app.windowEl.classList.add('hidden'); app.taskbarButton.remove();
+                    SYSTEM_STATE.openApps.delete(appName);
+                    if (SYSTEM_STATE.activeWindow === app.windowEl) SYSTEM_STATE.activeWindow = null;
+                }
+            }
+        })();
+    </script>
+</body>
+</html>
+
