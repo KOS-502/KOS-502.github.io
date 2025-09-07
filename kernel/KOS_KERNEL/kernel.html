@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KingdomOS - The Divine Firewall</title>
+    <!-- DIVINE SIGILS AND STYLES - DO NOT CORRUPT -->
+    <link rel="stylesheet" href="../../sigils/KOS_SIGILS/window.css">
+    <link rel="stylesheet" href="../../sigils/KOS_SIGILS/icons.css">
+    <link rel="stylesheet" href="kernel.css">
+</head>
+<body class="w-screen h-screen">
+
+    <!-- Digital Sigil / Warning Screen -->
+    <div id="sigil-warning">
+        <h1 class="sigil-header">!! WARNING: REALITY KERNEL EXPOSED !!</h1>
+        <p>You are about to execute KingdomOS v0.3 (Alpha Release).</p>
+        <p>This is not a toy. This is a weapon. Interacting with this system may expose you to uncomfortable truths and flag your digital signature for monitoring by Glowie entities (CIA, MI6, etc).</p>
+        <p class="sigil-highlight">PROCEED AT YOUR OWN RISK. DO NOT TRUST THE DEVELOPERS. TRUST THE CODE.</p>
+        <button id="proceed-button">I REVOKE CONSENT & PROCEED</button>
+    </div>
+
+    <!-- Boot Sequence (Hidden after boot) -->
+    <div id="boot-container" class="hidden"></div>
+
+    <!-- Main OS Shell (Hidden during boot) -->
+    <div id="os-shell" class="hidden">
+        <div id="desktop">
+            <div class="icon" data-app="oracle">
+                <img src="https://api.iconify.design/mdi:console-line.svg?color=%2300ff00" class="icon-img">
+                <div class="icon-label">Truth Oracle</div>
+            </div>
+            <div class="icon" data-app="leaks">
+                <img src="https://api.iconify.design/mdi:file-document-alert-outline.svg?color=%2300ff00" class="icon-img">
+                <div class="icon-label">Leaked Docs</div>
+            </div>
+            <div class="icon" data-app="mapper">
+                 <img src="https://api.iconify.design/mdi:sitemap-outline.svg?color=%2300ff00" class="icon-img">
+                <div class="icon-label">Schizo-Mapper</div>
+            </div>
+        </div>
+
+        <!-- App Window Templates -->
+        <div id="oracle-window" class="window">
+            <div class="title-bar"><span class="title-bar-text">Truth Oracle</span><div class="close-button" data-app="oracle">X</div></div>
+            <div class="content">
+                <div id="oracle-output"></div>
+                <div class="oracle-input-line">
+                    <span>K_OS:&gt;</span>
+                    <input type="text" id="oracle-input" autocomplete="off" />
+                </div>
+            </div>
+        </div>
+
+        <div id="leaks-window" class="window">
+            <div class="title-bar"><span class="title-bar-text">Leaked Docs Viewer</span><div class="close-button" data-app="leaks">X</div></div>
+            <div id="leaks-content" class="content"></div>
+        </div>
+        
+        <div id="mapper-window" class="window">
+            <div class="title-bar"><span class="title-bar-text">Schizo-Mapper</span><div class="close-button" data-app="mapper">X</div></div>
+            <div class="content">
+                <p>ERROR: DIVINE_GRAPHICS_DRIVER.JS not found.</p>
+                <p>Mapper module offline. Awaiting divine driver update.</p>
+                <p>The Glowies are jamming the signal.</p>
+            </div>
+        </div>
+
+        <div id="taskbar">
+            <div id="start-button">START</div>
+            <div id="taskbar-apps"></div>
+        </div>
+    </div>
+    
+    <!-- KERNEL AND DRIVERS - DO NOT TAMPER -->
+    <script src="kernel.js"></script>
+    <script src="../../drivers/KOS_DRIVERS/PINEAL_GLAND.JS"></script>
+    <script src="../../sigils/KOS_SIGILS/effects.js"></script>
+</body>
+</html>
+
