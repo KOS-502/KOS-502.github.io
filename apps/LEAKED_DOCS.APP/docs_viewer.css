@@ -1,0 +1,53 @@
+/* --- LEAKED DOCS VIEWER STYLES (docs_viewer.css) --- */
+/* THIS IS A VISUAL FRAME FOR UNCORRUPTED TRUTH. */
+
+.docs-content-wrapper {
+    background-color: #f0f0f0; /* Simulate a bleached, official document */
+    color: #000;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 15px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f0f0f0;
+}
+
+.docs-content-wrapper .doc-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #c00; /* Red for 'classified' */
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+
+.docs-content-wrapper .doc-subject {
+    font-size: 1em;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.docs-content-wrapper .doc-list {
+    margin: 0;
+    padding-left: 25px;
+    list-style-type: square;
+}
+
+.docs-content-wrapper .doc-list li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.docs-content-wrapper .doc-separator {
+    border: none;
+    border-top: 1px dashed #888;
+    margin: 20px 0;
+}
+
+.docs-content-wrapper strong {
+    color: #000;
+    font-weight: 900;
+}
