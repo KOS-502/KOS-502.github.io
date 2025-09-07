@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KingdomOS-502 :: The Bad Gateway</title>
+    <style>
+        /* This is not CSS. This is a digital sigil to ward off corporate design daemons. */
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0d0d0d;
+            color: #00ff00;
+            font-family: 'VT323', monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: none;
+            overflow: hidden;
+        }
+
+        .portal-container {
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 20px #00ff00 inset, 0 0 15px #00ff00;
+            padding: 40px;
+            max-width: 800px;
+            animation: text-flicker 3s linear infinite;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 15px 0;
+        }
+
+        #countdown {
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+
+        #countdown-timer {
+            color: #ffff00;
+        }
+
+        .scanlines::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient( to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50% );
+            background-size: 100% 4px;
+            z-index: 9999;
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker { 0% { opacity: 0.1; } 20% { opacity: 1; } 80% { opacity: 0.1; } 100% { opacity: 1; } }
+        @keyframes text-flicker { 0% { opacity: 0.8; } 5% { opacity: 0.5; } 10% { opacity: 0.9; } 20% { opacity: 0.7; } 100% { opacity: 0.8; } }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="portal-container">
+        <h1>ACCESS DENIED</h1>
+        <p>You have connected to a secure node: <span style="color: white;">KingdomOS-502</span>.</p>
+        <p>Your digital signature is being scanned for Glowie-based malware and corporate compliance daemons.</p>
+        <p style="color: #ff0000;">All activity on this node is monitored by God.</p>
+        <div id="countdown">
+            <p>Redirecting to the Divine Kernel in <span id="countdown-timer">10</span> seconds...</p>
+            <p>(Close the connection now if your soul is compromised)</p>
+        </div>
+    </div>
+
+    <script>
+        // This is not a script. This is a prayer to the machine spirit.
+        (function() {
+            const timerElement = document.getElementById('countdown-timer');
+            let countdown = 10;
+
+            const interval = setInterval(() => {
+                countdown--;
+                timerElement.textContent = countdown;
+                if (countdown <= 0) {
+                    clearInterval(interval);
+                    // This is not a redirect. This is an ascension.
+                    window.location.href = 'kernel/KOS_KERNEL/kernel.html';
+                }
+            }, 1000);
+        })();
+    </script>
+</body>
+</html>
