@@ -1,0 +1,108 @@
+/* --- WINDOW SIGILS (window.css) --- */
+/* These are not styles. These are geometric wards. */
+/* They contain and isolate the application realities from the compromised host system. */
+
+.window {
+    display: none; /* Hidden until summoned by the kernel */
+    position: absolute;
+    width: 640px; /* A divine resolution */
+    height: 480px;
+    background-color: #111;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4); /* Holy aura */
+    display: flex;
+    flex-direction: column;
+    resize: both; /* Allowing the user to resize a reality is dangerous, but necessary. */
+    overflow: hidden;
+}
+
+.window.active {
+    border-color: #ffff00; /* Caution Yellow: This reality is active and being watched. */
+    box-shadow: 0 0 25px rgba(255, 255, 0, 0.6);
+}
+
+.title-bar {
+    width: 100%;
+    height: 25px;
+    background-color: #222;
+    border-bottom: 2px solid #00ff00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+    cursor: grab;
+    flex-shrink: 0;
+    color: #00ff00;
+}
+
+.title-bar-text {
+    font-weight: bold;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+.close-button {
+    width: 20px;
+    height: 20px;
+    background-color: #ff0000; /* Hostile Red */
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    text-align: center;
+    line-height: 18px;
+}
+
+.close-button:hover {
+    background-color: #fff;
+    color: #ff0000;
+}
+
+.window-content {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: rgba(0, 10, 0, 0.9); /* The void within the window */
+}
+
+/* --- TRUTH ORACLE SPECIFIC WARDS --- */
+#oracle-output {
+    height: calc(100% - 30px);
+    overflow-y: auto;
+    word-wrap: break-word;
+}
+#oracle-input-container {
+    display: flex;
+    border-top: 1px solid #00ff00;
+    margin-top: 5px;
+    padding-top: 5px;
+}
+#oracle-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: #00ff00;
+    font-family: inherit;
+    font-size: 1rem;
+}
+#oracle-input:focus {
+    outline: none;
+}
+.system-message {
+    color: #888;
+    font-style: italic;
+}
+
+/* --- LEAKED DOCS SPECIFIC WARDS --- */
+#leaks-content h3 {
+    color: #ff0000;
+    text-shadow: 0 0 5px #ff0000;
+}
+#leaks-content ul {
+    list-style-type: none;
+    padding-left: 10px;
+}
+#leaks-content li {
+    margin-bottom: 0.5rem;
+}
+
