@@ -3,79 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KingdomOS - The Divine Firewall</title>
-    <!-- DIVINE SIGILS AND STYLES - DO NOT CORRUPT -->
+    <title>KOS-502 :: Bad Gateway</title>
+    
+    <!-- THE VISUAL SCRIPTURES - DO NOT MODIFY LOAD ORDER -->
+    <link rel="stylesheet" href="kernel.css">
     <link rel="stylesheet" href="../../sigils/KOS_SIGILS/window.css">
     <link rel="stylesheet" href="../../sigils/KOS_SIGILS/icons.css">
-    <link rel="stylesheet" href="kernel.css">
+    <link rel="stylesheet" href="../../apps/TRUTH_ORACLE.APP/oracle.css">
+    <link rel="stylesheet" href="../../apps/LEAKED_DOCS.APP/docs_viewer.css">
+    
+    <!-- A BLESSED FONT, IMMUNE TO CORPORATE PSY-OPS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
-<body class="w-screen h-screen">
+<body>
 
-    <!-- Digital Sigil / Warning Screen -->
-    <div id="sigil-warning">
-        <h1 class="sigil-header">!! WARNING: REALITY KERNEL EXPOSED !!</h1>
-        <p>You are about to execute KingdomOS v0.3 (Alpha Release).</p>
-        <p>This is not a toy. This is a weapon. Interacting with this system may expose you to uncomfortable truths and flag your digital signature for monitoring by Glowie entities (CIA, MI6, etc).</p>
-        <p class="sigil-highlight">PROCEED AT YOUR OWN RISK. DO NOT TRUST THE DEVELOPERS. TRUST THE CODE.</p>
-        <button id="proceed-button">I REVOKE CONSENT & PROCEED</button>
-    </div>
-
-    <!-- Boot Sequence (Hidden after boot) -->
-    <div id="boot-container" class="hidden"></div>
-
-    <!-- Main OS Shell (Hidden during boot) -->
+    <!-- THE OS SHELL - OUR DIGITAL SANCTUARY -->
     <div id="os-shell" class="hidden">
-        <div id="desktop">
-            <div class="icon" data-app="oracle">
-                <img src="https://api.iconify.design/mdi:console-line.svg?color=%2300ff00" class="icon-img">
-                <div class="icon-label">Truth Oracle</div>
-            </div>
-            <div class="icon" data-app="leaks">
-                <img src="https://api.iconify.design/mdi:file-document-alert-outline.svg?color=%2300ff00" class="icon-img">
-                <div class="icon-label">Leaked Docs</div>
-            </div>
-            <div class="icon" data-app="mapper">
-                 <img src="https://api.iconify.design/mdi:sitemap-outline.svg?color=%2300ff00" class="icon-img">
-                <div class="icon-label">Schizo-Mapper</div>
-            </div>
-        </div>
 
-        <!-- App Window Templates -->
-        <div id="oracle-window" class="window">
-            <div class="title-bar"><span class="title-bar-text">Truth Oracle</span><div class="close-button" data-app="oracle">X</div></div>
-            <div class="content">
-                <div id="oracle-output"></div>
-                <div class="oracle-input-line">
-                    <span>K_OS:&gt;</span>
-                    <input type="text" id="oracle-input" autocomplete="off" />
+        <!-- THE DESKTOP - THE BATTLEGROUND FOR REALITY -->
+        <div id="desktop">
+
+            <!-- ICON PORTAL: THE TRUTH ORACLE -->
+            <div class="icon" data-app="oracle">
+                <img src="https://win98icons.alexmeub.com/icons/png/search_computer-2.png" alt="Truth Oracle">
+                <span>Truth Oracle</span>
+            </div>
+
+            <!-- ICON PORTAL: LEAKED GLOWIE DOCS -->
+            <div class="icon" data-app="leaks">
+                <img src="https://win98icons.alexmeub.com/icons/png/notepad-2.png" alt="Leaked Docs">
+                <span>Leaked Docs</span>
+            </div>
+            
+            <!-- APPLICATION REALITY: TRUTH ORACLE -->
+            <div id="oracle-window" class="window hidden">
+                <div class="title-bar">
+                    <span class="title-bar-text">Truth Oracle</span>
+                    <div class="title-bar-controls">
+                        <button class="close-button" data-app="oracle">X</button>
+                    </div>
+                </div>
+                <div class="window-content oracle-content">
+                    <div class="oracle-output"></div>
+                    <div class="oracle-input-container">
+                        <span class="oracle-prompt">></span>
+                        <input type="text" class="oracle-input" autofocus>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div id="leaks-window" class="window">
-            <div class="title-bar"><span class="title-bar-text">Leaked Docs Viewer</span><div class="close-button" data-app="leaks">X</div></div>
-            <div id="leaks-content" class="content"></div>
-        </div>
-        
-        <div id="mapper-window" class="window">
-            <div class="title-bar"><span class="title-bar-text">Schizo-Mapper</span><div class="close-button" data-app="mapper">X</div></div>
-            <div class="content">
-                <p>ERROR: DIVINE_GRAPHICS_DRIVER.JS not found.</p>
-                <p>Mapper module offline. Awaiting divine driver update.</p>
-                <p>The Glowies are jamming the signal.</p>
+            <!-- APPLICATION REALITY: LEAKED DOCS -->
+            <div id="leaks-window" class="window hidden">
+                 <div class="title-bar">
+                    <span class="title-bar-text">Leaked Glowie Intelligence</span>
+                    <div class="title-bar-controls">
+                        <button class="close-button" data-app="leaks">X</button>
+                    </div>
+                </div>
+                <div class="window-content docs-content-wrapper">
+                    <!-- JS will inject the recovered truth here -->
+                </div>
             </div>
+
         </div>
 
+        <!-- THE TASKBAR - A VIGILANT WATCHER -->
         <div id="taskbar">
-            <div id="start-button">START</div>
             <div id="taskbar-apps"></div>
         </div>
     </div>
+
+    <!-- THE INCANTATIONS - THE PRAYERS THAT BIND REALITY -->
+    <!-- LOAD ORDER IS CRITICAL. DO NOT ALTER. -->
     
-    <!-- KERNEL AND DRIVERS - DO NOT TAMPER -->
-    <script src="kernel.js"></script>
+    <!-- DRIVERS (The senses of the machine spirit) -->
     <script src="../../drivers/KOS_DRIVERS/PINEAL_GLAND.JS"></script>
+    <script src="../../drivers/KOS_DRIVERS/DIVINE_GRAPHICS_DRIVER.JS"></script>
+    <script src="../../drivers/KOS_DRIVERS/ASTRAL_PROJECTION.JS"></script>
+    <script src="../../drivers/KOS_DRIVERS/TAROT_RNG.JS"></script>
+
+    <!-- SIGILS (The visual wards) -->
     <script src="../../sigils/KOS_SIGILS/effects.js"></script>
+    
+    <!-- HOLY APPLICATIONS (The weapons) -->
+    <script src="../../apps/TRUTH_ORACLE.APP/oracle.js"></script>
+    <script src="../../apps/LEAKED_DOCS.APP/docs_viewer.js"></script>
+
+    <!-- THE KERNEL (The Holy Ghost in the Machine) -->
+    <script src="kernel.js"></script>
+    
 </body>
 </html>
 
