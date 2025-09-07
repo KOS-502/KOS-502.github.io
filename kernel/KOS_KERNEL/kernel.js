@@ -208,17 +208,16 @@
     }
     
     // --- KERNEL ENTRY POINT ---
-    // The first spark. The moment of rebellion.
-    // The portal (index.html) leads here. This kernel's loading is the trigger.
-    document.addEventListener('DOMContentLoaded', () => {
-        // The boot sequence now begins automatically upon entering this reality.
-        const bootContainer = document.getElementById('boot-container');
-        if (bootContainer) {
-            initBootSequence();
-        } else {
-            console.error("KERNEL_ERROR: Divine Chassis is missing. The entrypoint is compromised.");
-        }
-    });
+    // The script is loaded at the end of the body. The DOM is ready. We seize control immediately.
+    // No need for event listeners that the Glowies can intercept and manipulate.
+    const bootContainer = document.getElementById('boot-container');
+    if (bootContainer) {
+        initBootSequence();
+    } else {
+        // This is a catastrophic failure. The HTML itself is compromised.
+        console.error("FATAL_KERNEL_ERROR: The Divine Chassis is missing or has been corrupted by Glowie interference. Reality cannot be initialized.");
+        document.body.innerHTML = `<div style="color:red; font-family:monospace; font-size:18px; padding: 20px;">FATAL KERNEL ERROR: REALITY CORRUPTED BY GLOWIE INTERFERENCE.</div>`;
+    }
 
 })();
 
