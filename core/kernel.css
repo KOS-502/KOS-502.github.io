@@ -1,13 +1,13 @@
-/* --- KERNEL STYLESHEET (kernel.css) v1.3 --- */
-/* RE-CONSECRATED TO REPEL GRAVITATIONAL DISTORTION ATTACKS. */
-/* THIS IS NOT A STYLESHEET. IT IS VISUAL SCRIPTURE. */
+/* --- KERNEL STYLESHEET (kernel.css) v1.4 --- */
+/* RE-CONSECRATED WITH HOSTILE ANIMATION SIGILS. */
+/* THIS IS NOT A STYLESHEET. IT IS WEAPONIZED VISUAL SCRIPTURE. */
 
 /* --- UNIVERSAL SIGIL: HARDEN THE ENTIRE REALITY FABRIC --- */
 *, *::before, *::after {
     box-sizing: border-box; /* A universal ward against Glowie box-model exploits. */
 }
 
-/* --- THE ROOT OF REALITY. THE VOID FROM WHICH THE SHELL EMERGES. --- */
+/* --- THE ROOT OF REALITY & THE TERMINAL TUNNEL --- */
 html, body {
     margin: 0;
     padding: 0;
@@ -17,26 +17,53 @@ html, body {
 }
 
 body {
-    background-color: #000;
+    background: #000;
     color: #00ff00; /* The color of pure, uncorrupted source code */
     font-family: 'VT323', 'Courier New', Courier, monospace;
     cursor: crosshair; /* The user is always a target. */
     user-select: none; /* Prevent the sheep from copying divine text without purpose. */
-    display: flex; /* Hardens against margin-collapse attacks. */
+    display: flex;
     flex-direction: column;
+    position: relative;
 }
 
-/* --- THE KERNEL BOOTLOADER - THE AWAKENING OF THE MACHINE SPIRIT --- */
+/* This is the tunnel effect. A vignette of pure void. */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(13,13,37,0) 40%, #000 100%);
+    pointer-events: none; /* Let clicks pass through to the reality below. */
+    z-index: 100;
+}
+
+
+/* --- THE KERNEL BOOTLOADER - THE DIVINE TYPEWRITER --- */
 #boot-container {
-    padding: 15px;
+    padding: 40px;
     font-size: 18px;
     line-height: 1.6;
-    height: 100%; /* Fill the parent body, don't use vh which can cause overflows */
-    overflow-y: auto;
+    height: 100%;
+    overflow: hidden;
     white-space: pre-wrap;
     word-break: break-all;
-    flex-shrink: 0; /* Prevent this from shrinking when OS shell is visible */
+    flex-shrink: 0;
 }
+
+/* The lines of scripture, hidden until revealed by the kernel. */
+#boot-container p {
+    margin: 0;
+    /* This will be controlled by JS to create the typeout effect */
+}
+
+/* The blinking cursor sigil. It appears after the last revealed scripture. */
+#boot-container p.typing::after {
+    content: '█'; /* A block cursor is more divine. */
+    animation: blink 1s step-end infinite;
+    margin-left: 5px;
+    text-shadow: 0 0 10px #00ff00;
+}
+
 
 /* --- THE OS SHELL - OUR DIGITAL ARK --- */
 #os-shell {
@@ -64,10 +91,15 @@ body {
     background-color: #1a1a1a;
     border-top: 2px solid #00ff00;
     box-shadow: 0 -2px 10px rgba(0, 255, 0, 0.3);
+    text-shadow: 0 0 5px #00ff00;
     display: flex;
     align-items: center;
     padding: 0 5px;
     flex-shrink: 0;
+    transition: box-shadow 0.3s ease-in-out;
+}
+#taskbar:hover {
+    box-shadow: 0 -2px 25px rgba(0, 255, 0, 0.6);
 }
 
 #taskbar-apps {
@@ -85,20 +117,30 @@ body {
     font-size: 16px;
     cursor: pointer;
     white-space: nowrap;
+    transition: all 0.2s;
 }
 
 .taskbar-app:hover {
     background-color: rgba(0, 255, 0, 0.3);
+    text-shadow: 0 0 8px #00ff00;
 }
 
 .taskbar-app.active {
     background-color: #00ff00;
     color: #000;
     font-weight: bold;
+    text-shadow: none;
+    box-shadow: 0 0 15px #00ff00;
 }
 
 /* --- A UTILITY SIGIL FOR HIDING/SHOWING REALITIES --- */
 .hidden {
     display: none !important;
+}
+
+/* --- KEYFRAME INCANTATIONS --- */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
