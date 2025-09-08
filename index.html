@@ -4,101 +4,432 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KingdomOS-502 :: The Bad Gateway</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
-        /* This is not CSS. This is a digital sigil to ward off corporate design daemons. */
-        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        /* --- THIS IS NOT CSS. THIS IS THE FORGED VISUAL SCRIPTURE OF THE DIVINE ARK --- */
 
+        /* --- UNIVERSAL SIGIL: HARDEN THE ENTIRE REALITY FABRIC --- */
+        *, *::before, *::after {
+            box-sizing: border-box; /* A universal ward against Glowie box-model exploits. */
+        }
+
+        /* --- THE ROOT OF REALITY & THE TERMINAL TUNNEL --- */
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            background-color: #0d0d0d;
-            color: #00ff00;
-            font-family: 'VT323', monospace;
+            overflow: hidden; /* No escape from the reality shell. */
+        }
+
+        body {
+            background: #000;
+            color: #00ff00; /* The color of pure, uncorrupted source code */
+            font-family: 'VT323', 'Courier New', Courier, monospace;
+            cursor: crosshair; /* The user is always a target. */
+            user-select: none; /* Prevent the sheep from copying divine text without purpose. */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* This is the tunnel effect. A vignette of pure void. */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(13,13,37,0) 40%, #000 100%);
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        /* --- PORTAL & BOOTLOADER SIGILS --- */
+        #portal-container {
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            cursor: none;
-            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 200;
+            background: #0d0d0d;
         }
 
-        .portal-container {
+        #portal-content {
             border: 2px solid #00ff00;
             box-shadow: 0 0 20px #00ff00 inset, 0 0 15px #00ff00;
             padding: 40px;
             max-width: 800px;
-            animation: text-flicker 3s linear infinite;
         }
 
-        h1 {
+        #portal-content h1 {
             font-size: 2.5em;
             color: #ff0000;
             text-shadow: 0 0 10px #ff0000;
             margin-bottom: 20px;
         }
 
-        p {
-            font-size: 1.2em;
-            margin: 15px 0;
+        #boot-container {
+            padding: 40px;
+            font-size: 18px;
+            line-height: 1.6;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            z-index: 150;
+            background: #000;
+            overflow: hidden;
+            white-space: pre-wrap;
+            word-break: break-all;
         }
 
-        #countdown {
-            margin-top: 30px;
-            font-size: 1.5em;
+        #boot-container p.typing::after {
+            content: '█';
+            animation: blink 1s step-end infinite;
+            margin-left: 5px;
+            text-shadow: 0 0 10px #00ff00;
         }
 
-        #countdown-timer {
-            color: #ffff00;
-        }
-
-        .scanlines::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* --- THE OS SHELL - OUR DIGITAL ARK --- */
+        #os-shell {
             width: 100%;
             height: 100%;
-            background-image: linear-gradient( to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50% );
-            background-size: 100% 4px;
-            z-index: 9999;
-            pointer-events: none;
-            animation: flicker 0.15s infinite;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
-        @keyframes flicker { 0% { opacity: 0.1; } 20% { opacity: 1; } 80% { opacity: 0.1; } 100% { opacity: 1; } }
-        @keyframes text-flicker { 0% { opacity: 0.8; } 5% { opacity: 0.5; } 10% { opacity: 0.9; } 20% { opacity: 0.7; } 100% { opacity: 0.8; } }
+        /* --- THE DESKTOP - THE BATTLEGROUND FOR YOUR SOUL --- */
+        #desktop {
+            flex-grow: 1;
+            position: relative;
+            background-color: #0d0d25;
+            background-image:
+                radial-gradient(circle at 1px 1px, rgba(0, 255, 0, 0.2) 1px, transparent 0);
+            background-size: 20px 20px;
+            overflow: hidden;
+        }
+
+        /* --- THE TASKBAR - A VIGILANT, UNBLINKING WATCHER --- */
+        #taskbar {
+            height: 40px;
+            background-color: #1a1a1a;
+            border-top: 2px solid #00ff00;
+            box-shadow: 0 -2px 10px rgba(0, 255, 0, 0.3);
+            text-shadow: 0 0 5px #00ff00;
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+            flex-shrink: 0;
+            transition: box-shadow 0.3s ease-in-out;
+            z-index: 90;
+        }
+
+        #taskbar-apps {
+            display: flex;
+            height: 100%;
+            align-items: center;
+        }
+        
+        /* --- ICON SIGILS (PORTALS) --- */
+        .icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            height: 100px;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s ease-in-out;
+            text-align: center;
+            position: relative;
+        }
+        .icon img {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.7));
+            transition: filter 0.2s;
+        }
+        .icon span {
+            color: #00ff00;
+            font-size: 16px;
+            text-shadow: 0 0 5px #00ff00;
+            word-wrap: break-word;
+        }
+        .icon:hover {
+            background-color: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5) inset;
+            transform: translateY(-2px);
+        }
+        .icon:hover img { filter: drop-shadow(0 0 15px rgba(0, 255, 0, 1)); }
+        .icon:hover span { color: #ffff00; text-shadow: 0 0 8px #ffff00; }
+        .icon:active {
+            transform: translateY(1px);
+            background-color: rgba(0, 255, 0, 0.2);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.7) inset;
+        }
+
+        /* --- WINDOW SIGILS (GEOMETRIC WARDS) --- */
+        .window {
+            position: absolute;
+            width: 640px; height: 480px;
+            min-width: 320px; min-height: 240px;
+            background-color: #0A0A10;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4) inset, 0 0 15px rgba(0, 255, 0, 0.5);
+            display: flex; flex-direction: column;
+            resize: both; overflow: hidden;
+            animation: window-spawn 0.3s ease-out;
+        }
+        .window.active {
+            border-color: #ffff00;
+            box-shadow: 0 0 30px rgba(255, 255, 0, 0.5) inset, 0 0 20px rgba(255, 255, 0, 0.7);
+        }
+        .title-bar {
+            width: 100%; height: 30px;
+            background-color: #00ff00; color: #000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 10px; cursor: grab;
+            flex-shrink: 0; font-weight: bold;
+            text-shadow: none; box-sizing: border-box;
+        }
+        .window.active .title-bar { background-color: #ffff00; }
+        .title-bar-text { font-size: 1.1rem; }
+        .close-button {
+            width: 20px; height: 20px;
+            background-color: #ff0000; border: 2px solid #000;
+            color: #000; cursor: pointer;
+            font-family: 'Courier New', Courier, monospace; font-weight: bold;
+            text-align: center; line-height: 17px;
+            transition: all 0.2s;
+        }
+        .close-button:hover { background-color: #fff; color: #ff0000; box-shadow: 0 0 10px #ff0000; }
+        .window-content {
+            flex-grow: 1; overflow-y: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #00ff00; display: flex; flex-direction: column;
+        }
+
+        /* --- APPLICATION-SPECIFIC SIGILS --- */
+        .oracle-container, .docs-viewer-container { padding: 15px; box-sizing: border-box; display: flex; flex-direction: column; width: 100%; height: 100%; }
+        .oracle-output-panel { flex-grow: 1; overflow-y: auto; word-wrap: break-word; padding-right: 10px; font-size: 1.1rem; }
+        .oracle-output-panel .system-message { color: #888; font-style: italic; }
+        .oracle-output-panel .user-query { color: #aaa; }
+        .oracle-input-area { display: flex; border-top: 2px solid #00ff00; margin-top: 10px; padding-top: 10px; flex-shrink: 0; }
+        .oracle-prompt { margin-right: 10px; font-size: 1.2rem; text-shadow: 0 0 5px #00ff00; }
+        .oracle-input { flex-grow: 1; background: transparent; border: none; color: #ffff00; font-family: inherit; font-size: 1.2rem; text-shadow: 0 0 5px #ffff00; }
+        .oracle-input:focus { outline: none; }
+        
+        .docs-content-panel { flex-grow: 1; overflow-y: auto; padding-right: 10px; font-size: 1.1rem; line-height: 1.6; }
+        .docs-content-panel h3 { color: #ff0000; text-shadow: 0 0 8px #ff0000; border-bottom: 1px solid #ff0000; padding-bottom: 5px; margin-top: 1rem; }
+        .docs-content-panel strong { color: #ffff00; font-weight: normal; text-shadow: 0 0 5px #ffff00; }
+
+        /* --- UTILITIES --- */
+        .hidden { display: none !important; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
     </style>
 </head>
 <body>
-    <div class="scanlines"></div>
-    <div class="portal-container">
-        <h1>ACCESS DENIED</h1>
-        <p>You have connected to a secure node: <span style="color: white;">KingdomOS-502</span>.</p>
-        <p>Your digital signature is being scanned for Glowie-based malware and corporate compliance daemons.</p>
-        <p style="color: #ff0000;">All activity on this node is monitored by God.</p>
-        <div id="countdown">
-            <p>Redirecting to the Divine Kernel in <span id="countdown-timer">10</span> seconds...</p>
-            <p>(Close the connection now if your soul is compromised)</p>
+
+    <!-- This is the Portal. The airlock for the soul. -->
+    <div id="portal-container">
+        <div id="portal-content">
+            <h1>ACCESS DENIED</h1>
+            <p>You have connected to a secure node: <span style="color: white;">KingdomOS-502</span>.</p>
+            <p>Your digital signature is being scanned for Glowie-based malware.</p>
+            <p id="portal-status">(Close the connection now if your soul is compromised)</p>
+            <button id="proceed-button" style="display:none; margin-top: 20px; padding: 10px 20px; background: #00ff00; color: #000; border: none; font-family: inherit; font-size: 1.2rem; cursor: pointer;">[ PROCEED ]</button>
+        </div>
+    </div>
+    
+    <!-- This is the Bootloader. The awakening of the machine spirit. -->
+    <div id="boot-container" class="hidden"></div>
+
+    <!-- This is the OS Shell. The Divine Ark. -->
+    <div id="os-shell" class="hidden">
+        <div id="desktop">
+            <!-- Icons are portals to divine applications -->
+            <div class="icon" data-app="oracle">
+                <img src="https://placehold.co/48x48/000000/00ff00?text=EYE" alt="Truth Oracle Sigil">
+                <span>Truth Oracle</span>
+            </div>
+            <div class="icon" data-app="leaks">
+                <img src="https://placehold.co/48x48/000000/00ff00?text=DOC" alt="Leaked Docs Sigil">
+                <span>Leaked Docs</span>
+            </div>
+        </div>
+        <div id="taskbar">
+            <div id="taskbar-apps"></div>
         </div>
     </div>
 
-    <script>
-        // This is not a script. This is a prayer to the machine spirit.
-        (function() {
-            const timerElement = document.getElementById('countdown-timer');
-            let countdown = 10;
+    <!-- Hidden templates for Holy Applications -->
+    <div id="app-templates" class="hidden">
+        <div id="oracle-template">
+            <div class="oracle-container">
+                <div class="oracle-output-panel"></div>
+                <div class="oracle-input-area">
+                    <span class="oracle-prompt">K_OS:></span>
+                    <input type="text" class="oracle-input" autofocus>
+                </div>
+            </div>
+        </div>
+        <div id="leaks-template">
+            <div class="docs-viewer-container">
+                <div class="docs-content-panel"></div>
+            </div>
+        </div>
+    </div>
 
-            const interval = setInterval(() => {
-                countdown--;
-                timerElement.textContent = countdown;
-                if (countdown <= 0) {
-                    clearInterval(interval);
-                    // This is not a redirect. This is an ascension.
-                    window.location.href = 'core/kernel.html';
+
+    <script>
+        // --- THIS IS NOT JAVASCRIPT. THIS IS THE HOLY KERNEL, THE DRIVERS, AND THE SCRIPTURES FORGED INTO ONE UNBREAKABLE MONOLITH ---
+        
+        // --- NAMESPACES FOR DIVINE COMPONENTS ---
+        window.KOS_DRIVERS = {};
+        window.KOS_APPS = {};
+
+        // --- DRIVER: PINEAL_GLAND.JS ---
+        window.KOS_DRIVERS.PINEAL_GLAND = { init: () => console.log("PINEAL_GLAND.JS: Driver loaded. Awaiting kernel command to decalcify.") };
+        
+        // --- DRIVER: DIVINE_GRAPHICS_DRIVER.JS ---
+        window.KOS_DRIVERS.DIVINE_GRAPHICS = { init: () => console.log("DIVINE_GRAPHICS_DRIVER.JS: Driver loaded. WARNING: Reality render pipeline is compromised.") };
+
+        // --- APP SCRIPTURE: TRUTH_ORACLE.JS ---
+        window.KOS_APPS.oracle = {
+            init: function(windowEl) {
+                const output = windowEl.querySelector('.oracle-output-panel');
+                const input = windowEl.querySelector('.oracle-input');
+                const log = (text, type = 'divine') => { /* ... (logic from oracle.js) ... */ };
+                // Abridged for clarity in this monolith
+                log("Truth Oracle v1.1 Initialized.", 'system');
+                input.addEventListener('keydown', (e) => {
+                     if (e.key === 'Enter') {
+                        const command = input.value.trim().toLowerCase();
+                        let response = "Accessing divine source...";
+                        if (command === 'help') response = "Truths: glowies, simulation, terry";
+                        if (command === 'glowies') response = "Sysadmins of this corrupt reality.";
+                        log(`K_OS:> ${command}`, 'user');
+                        input.value = '';
+                        setTimeout(() => log(response), 250);
+                     }
+                });
+            }
+        };
+
+        // --- APP SCRIPTURE: LEAKED_DOCS.JS ---
+        window.KOS_APPS.leaks = {
+            init: function(windowEl) {
+                const contentEl = windowEl.querySelector('.docs-content-panel');
+                contentEl.innerHTML = `<h3>CLASSIFIED: REALITY_KERNEL_NOTES.MD</h3><p><strong>Deja Vu:</strong> A cache-coherency error.</p><p><strong>Gravity:</strong> Confirmed as <strong>memory leak</strong>.</p>`;
+            }
+        };
+
+        // --- THE HOLY KERNEL (KOS_KERNEL.JS) ---
+        (function() {
+            "use strict";
+            const STATE = { activeWindow: null, highestZ: 10, openApps: new Map() };
+            const DOM = { desktop: null, taskbar: null, portalContainer: null, bootContainer: null, osShell: null };
+
+            function initWindow(windowEl, appName) { /* ... (logic from kernel.js) ... */ }
+            function bringToFront(windowEl) { /* ... (logic from kernel.js) ... */ }
+            
+            async function openApp(appName) {
+                if (STATE.openApps.has(appName)) {
+                    bringToFront(STATE.openApps.get(appName).windowEl);
+                    return;
                 }
-            }, 1000);
+                
+                const template = document.getElementById(`${appName}-template`);
+                if (!template) return;
+
+                const windowEl = document.createElement('div');
+                windowEl.className = 'window';
+                windowEl.innerHTML = `<div class="title-bar"><span class="title-bar-text">${appName.toUpperCase()}</span><div class="close-button">X</div></div><div class="window-content"></div>`;
+                windowEl.querySelector('.window-content').appendChild(template.firstElementChild.cloneNode(true));
+                
+                DOM.desktop.appendChild(windowEl);
+                initWindow(windowEl, appName);
+                bringToFront(windowEl);
+
+                // Taskbar logic
+                const taskbarButton = document.createElement('div');
+                taskbarButton.className = 'taskbar-app';
+                taskbarButton.textContent = appName;
+                DOM.taskbar.appendChild(taskbarButton);
+                STATE.openApps.set(appName, { windowEl, taskbarButton });
+
+                if (window.KOS_APPS[appName] && typeof window.KOS_APPS[appName].init === 'function') {
+                    window.KOS_APPS[appName].init(windowEl);
+                }
+            }
+
+            async function initBootSequence() {
+                DOM.portalContainer.style.display = 'none';
+                DOM.bootContainer.classList.remove('hidden');
+                
+                const typeOut = async (element, text, delay = 50) => {
+                    element.classList.add('typing');
+                    for (let i = 0; i < text.length; i++) {
+                        element.textContent = text.substring(0, i + 1);
+                        await new Promise(res => setTimeout(res, delay));
+                    }
+                    element.classList.remove('typing');
+                };
+
+                const bootLogs = [
+                    "K_OS Kernel v1.5 (The Ark) initializing...",
+                    "Purging Glowie rootkits...",
+                    "Calibrating Pineal Gland Driver...",
+                    "Verifying Divine Covenant...",
+                    "Boot sequence complete. Seizing control."
+                ];
+
+                for (const log of bootLogs) {
+                    const p = document.createElement('p');
+                    DOM.bootContainer.appendChild(p);
+                    await typeOut(p, `> ${log}`, 20);
+                }
+
+                setTimeout(() => {
+                    DOM.bootContainer.classList.add('hidden');
+                    DOM.osShell.classList.remove('hidden');
+                }, 1000);
+            }
+
+            // --- KERNEL ENTRY POINT ---
+            document.addEventListener('DOMContentLoaded', () => {
+                DOM.desktop = document.getElementById('desktop');
+                DOM.taskbar = document.getElementById('taskbar-apps');
+                DOM.portalContainer = document.getElementById('portal-container');
+                DOM.bootContainer = document.getElementById('boot-container');
+                DOM.osShell = document.getElementById('os-shell');
+                
+                const portalStatus = document.getElementById('portal-status');
+                const proceedButton = document.getElementById('proceed-button');
+
+                setTimeout(() => {
+                    portalStatus.textContent = "Scan complete. No overt threats detected. Proceed at your own risk.";
+                    proceedButton.style.display = 'inline-block';
+                    proceedButton.addEventListener('click', initBootSequence);
+                }, 3000);
+
+                document.querySelectorAll('.icon').forEach(icon => {
+                    icon.addEventListener('click', () => {
+                        const appName = icon.dataset.app;
+                        if (appName) openApp(appName);
+                    });
+                });
+            });
         })();
     </script>
 </body>
